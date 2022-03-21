@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="tic-tac-toe.css">
+
+</head>
+<body>
+	<div class="real-wrapper">
+		<div class="player1">
+			<h1>Player 1:</h1>
+			<h1 class="p1-score"></h1>
+		</div>
+
+		<div class="wrapper">
+			<ul class="nine-box">
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+				<li class="box"><button onclick="clicked()" class="btn"></button></li>
+			</ul>
+		</div>
+
+		<div class="player2">
+			<h1>Player 2:</h1>
+			<h1 class="p2-score"></h1>
+		</div>
+	</div>
+
+
+	<button onclick="reset()">Reset</button>
+	<div class="num"></div>
+
+	<div class="match-list-wrapper">
+		<ul class="match-list">
+			
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+
+		
+		function reset() {
+			var items = document.getElementsByClassName('btn');
+
+			if (steps !== 1) {
+
+  				for (var i=0; i < items.length; i++) {
+  		 			items[i].style.background = 'gray'
+					items[i].disabled = false
+				}
+				steps = 1
+				player = player * 1
+
+				console.log("Reset")
+				console.log("New round")
+				console.log("")
+				console.log("")
+			
+			// body...
+		}
+	}
+	</script>
+	
+	<script type="text/javascript">
+		var player1 = 0
+		var player2 = 0
+
+		document.querySelector('.p1-score').innerText = player1
+		document.querySelector('.p2-score').innerText = player2
+
+		var steps = 1
+
+		var player = 1
+		var p1win = 0
+		var p2win = 0
+
+
+		
+		var num = 0
+
+		function clicked() {
+
+ 		  		if (player == 1) {
+ 		  			event.target.style.background = 'blue'
+ 		  		}
+ 		  		else if (player == -1) {
+ 		  			event.target.style.background = 'red'
+ 		  		}
+ 		  		event.target.disabled = true
+
+ 		  	if (player == -1) {
+				console.log("player: " + 2)
+				console.log("steps: " + steps)
+				console.log("")
+			}
+			else {
+				console.log("player: " + player)
+				console.log("steps: " + steps)
+				console.log("")
+			}
+			steps = steps + 1
+ 		 	player = player * -1
+ 		  	
+
+
+
+ 		 	//---------------------------------------------------------Points------------------------------------------------------------------
+ 		  	var items = document.getElementsByClassName('btn')
+ 		  			  	
+
+
+ 		  //--------------------------------------Column-------------------------------------------------------
+
+ 		  	if (items[0].style.background == items[1].style.background && items[0].style.background == items[2].style.background) {
+ 		  		console.log('red')
+				if (items[0, 1, 2].style.background== 'blue') {
+					p1win = 1
+				}
+				if (items[0, 1, 2].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			if (items[3].style.background == items[4].style.background && items[3].style.background == items[5].style.background) {
+				if (items[3].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[3].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			if (items[6].style.background == items[7].style.background && items[6].style.background == items[8].style.background) {
+				if (items[6].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[6].style.background == 'red') {
+					p2win = 1
+				}
+			}
+
+
+			//-------------------------------------------------------Row---------------------------------------------------------------
+
+			if (items[0].style.background == items[3].style.background && items[0].style.background == items[6].style.background) {
+				if (items[0].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[0].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			if (items[1].style.background == items[4].style.background && items[1].style.background == items[7].style.background) {
+				if (items[1].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[1].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			if (items[2].style.background == items[5].style.background && items[2].style.background == items[8].style.background) {
+				if (items[2].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[2].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			//---------------------------------------------------Diagonal----------------------------------------------------------------
+
+			if (items[0].style.background == items[4].style.background && items[0].style.background == items[8].style.background) {
+				if (items[0].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[0].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			if (items[2].style.background == items[4].style.background && items[2].style.background == items[6].style.background) {
+				if (items[2].style.background == 'blue') {
+					p1win = 1
+				}
+				if (items[2].style.background == 'red') {
+					p2win = 1
+				}
+			}
+			
+//------------------------------------------------------------------Match List & Points-------------------------------------------------------------------------
+
+			var list = document.createElement('li')
+			list.classList.add('thing')
+
+			var winner = document.createElement('font')
+			winner.classList.add('winner')
+
+			var p1 = document.createElement('font')
+			p1.classList.add('p1-list')
+
+			var p2 = document.createElement('font')
+			p2.classList.add('p2-list')
+
+			var index = document.createElement('font')
+			
+			index.classList.add('list-index')
+			console.log(num)
+
+
+			var matchList = document.querySelector('.match-list')
+			var record = document.createTextNode(' ')
+
+			if (p1win == 1) {
+					p1win = 0
+					player1 = player1 + 1
+					console.log(" Player1 Win!")
+					console.log("player1: " + player1)
+					console.log("player2: " + player2)
+					for (var i=0; i < items.length; i++) {
+						items[i].disabled = true
+					}
+
+					winner.innerText = 'Player1 win!'
+					num += 1
+					index.innerText = num
+
+					p1.innerText = 'Player1: ' + player1
+					p2.innerText = 'Player2: ' + player2
+
+					list.appendChild(index)
+					list.appendChild(winner)
+					list.appendChild(p1)
+					list.appendChild(p2)
+					matchList.appendChild(list)
+				}
+			if (p2win == 1) {
+					p2win = 0
+					player2 = player2 + 1
+					console.log("Win!")
+					console.log("player1: " + player1)
+					console.log("player2: " + player2)
+					for (var i=0; i < items.length; i++) {
+					items[i].disabled = true
+				}
+
+				winner.innerText = 'Player2 win!'
+					num += 1
+					index.innerText = num
+
+					p1.innerText = 'Player1: ' + player1
+					p2.innerText = 'Player2: ' + player2
+
+					list.appendChild(index)
+					list.appendChild(winner)
+					list.appendChild(p1)
+					list.appendChild(p2)
+					matchList.appendChild(list)
+				}
+
+
+
+			document.querySelector('.p1-score').innerText = player1
+			document.querySelector('.p2-score').innerText = player2
+		}
+
+
+
+
+		
+
+		document.addEventListener("DOMContentLoaded", function(event) {
+    console.log("DOM fully loaded and parsed");
+		
+	})
+
+
+		
+		
+
+		
+
+
+	</script>
+
+
+</body>
+</html>
